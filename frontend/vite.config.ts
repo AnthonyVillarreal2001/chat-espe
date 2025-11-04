@@ -6,12 +6,9 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'https://tu-backend.onrender.com',  // ← Cambia por URL de Render (Paso 3)
+        target: 'http://localhost:5000',
         changeOrigin: true,
       },
     },
   },
-  define: {
-    'process.env.BACKEND_URL': JSON.stringify('https://tu-backend.onrender.com')
-  }
-});
+})

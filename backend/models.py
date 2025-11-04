@@ -18,6 +18,12 @@ user_sessions = db['user_sessions']
 db_lock = threading.Lock()
 
 def init_db():
+    """Limpia TODAS las colecciones antes de pruebas"""
+    with db_lock:
+        print("Limpieza de DB para pruebas...")
+        rooms.delete_many({})        
+        user_sessions.delete_many({}) 
+        print("DB limpia")
     try:
         # Prueba conexión
         client.admin.command('ping')
